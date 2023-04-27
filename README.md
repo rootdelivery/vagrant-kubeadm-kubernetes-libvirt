@@ -27,7 +27,7 @@ vagrant plugin install vagrant-sshfs
 Then
 
 ```shell
-git clone https://github.com/scriptcamp/vagrant-kubeadm-kubernetes-libvirt.git
+git clone https://github.com/rootdelivery/vagrant-kubeadm-kubernetes-libvirt.git
 cd vagrant-kubeadm-kubernetes-libvirt
 vagrant up --no-parallel
 ```
