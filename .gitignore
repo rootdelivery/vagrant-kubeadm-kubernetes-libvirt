@@ -1,9 +1,7 @@
 # General
 .vagrant/
 configs/
-vagrant/config
-vagrant/token
-vagrant/join.sh
+vagrant/
 
 # Log files (if you are creating logs in debug mode, uncomment this)
 # *.log
