@@ -51,3 +51,12 @@ EOF
 
 kubectl apply -f https://raw.githubusercontent.com/techiescamp/kubeadm-scripts/main/manifests/metrics-server.yaml
 
+# Add information about dashboard version
+
+cat <<EOF >> $config_path/settings-dashboard.yaml
+  dashboard: 2.7.0
+  kubernetes: 1.26.1-00
+  os: xUbuntu_22.04
+EOF
+
+

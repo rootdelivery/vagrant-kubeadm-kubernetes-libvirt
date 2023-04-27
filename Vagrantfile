@@ -28,11 +28,12 @@ Vagrant.configure("2") do |config|
   config.vm.define "master" do |master|
     master.vm.hostname = "master-node"
     master.vm.network "private_network", ip: settings["network"]["control_ip"]
-    if settings["shared_folders"]
-      settings["shared_folders"].each do |shared_folder|
-        master.vm.synced_folder shared_folder["host_path"], shared_folder["vm_path"]
-      end
-    end
+    master.vm.synced_folder "./vagrant", "/vagrant/configs", type: "sshfs"
+#    if settings["shared_folders"]
+#      settings["shared_folders"].each do |shared_folder|
+#        master.vm.synced_folder shared_folder["host_path"], shared_folder["vm_path"]
+#      end
+#    end
     master.vm.provider "virtualbox" do |vb|
         vb.cpus = settings["nodes"]["control"]["cpu"]
         vb.memory = settings["nodes"]["control"]["memory"]
@@ -63,11 +64,12 @@ Vagrant.configure("2") do |config|
     config.vm.define "node0#{i}" do |node|
       node.vm.hostname = "worker-node0#{i}"
       node.vm.network "private_network", ip: IP_NW + "#{IP_START + i}"
-      if settings["shared_folders"]
-        settings["shared_folders"].each do |shared_folder|
-          node.vm.synced_folder shared_folder["host_path"], shared_folder["vm_path"]
-        end
-      end
+      node.vm.synced_folder "./vagrant", "/vagrant/configs", type: "sshfs"
+#      if settings["shared_folders"]
+#        settings["shared_folders"].each do |shared_folder|
+#          node.vm.synced_folder shared_folder["host_path"], shared_folder["vm_path"]
+#        end
+#      end
       node.vm.provider "virtualbox" do |vb|
           vb.cpus = settings["nodes"]["workers"]["cpu"]
           vb.memory = settings["nodes"]["workers"]["memory"]

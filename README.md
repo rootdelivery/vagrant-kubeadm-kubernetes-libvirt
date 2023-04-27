@@ -1,6 +1,5 @@
 
 # Vagrantfile and Scripts to Automate Kubernetes Setup using Kubeadm [Practice Environment for CKA/CKAD and CKS Exams]
-Version for libvirt
 
 ## Documentation
 
@@ -17,24 +16,36 @@ If you are preparing for CKA, CKAD, CKS, or KCNA exam, **save 30%** today using 
 1. Working Vagrant setup
 2. 8 Gig + RAM workstation as the Vms use 3 vCPUS and 4+ GB RAM
 
+## For MAC/Linux Users
+
+Latest version of Virtualbox for Mac/Linux can cause issues.
+
+Create/edit the /etc/vbox/networks.conf file and add the following to avoid any network related issues.
+<pre>* 0.0.0.0/0 ::/0</pre>
+
+or run below commands
+
+```shell
+sudo mkdir -p /etc/vbox/
+echo "* 0.0.0.0/0 ::/0" | sudo tee -a /etc/vbox/networks.conf
+```
+
+So that the host only networks can be in any range, not just 192.168.56.0/21 as described here:
+https://discuss.hashicorp.com/t/vagrant-2-2-18-osx-11-6-cannot-create-private-network/30984/23
+
 ## Bring Up the Cluster
 
 To provision the cluster, execute the following commands.
-Install vagrant-sshfs plugin:
-```shell
-vagrant plugin install vagrant-sshfs
-```
-Then
 
 ```shell
-git clone https://github.com/rootdelivery/vagrant-kubeadm-kubernetes-libvirt.git
-cd vagrant-kubeadm-kubernetes-libvirt
-vagrant up --no-parallel
+git clone https://github.com/scriptcamp/vagrant-kubeadm-kubernetes.git
+cd vagrant-kubeadm-kubernetes
+vagrant up
 ```
 ## Set Kubeconfig file variable
 
 ```shell
-cd vagrant-kubeadm-kubernetes-libvirt
+cd vagrant-kubeadm-kubernetes
 cd configs
 export KUBECONFIG=$(pwd)/config
 ```

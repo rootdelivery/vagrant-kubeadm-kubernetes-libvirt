@@ -26,11 +26,13 @@ nodes:
     memory: 2048
 # Mount additional shared folders from the host into each virtual machine.
 # Note that the project directory is automatically mounted at /vagrant.
-# shared_folders:
-#   - host_path: ../images
-#     vm_path: /vagrant/images
+#  shared_folders:
+#   - host_path: /vagrant
+#   - vm_path: /vagrant/configs
 software:
-  box: bento/ubuntu-22.04
+  #box: bento/ubuntu-22.04
+  box: roboxes/ubuntu2204
+
   calico: 3.25.0
   # To skip the dashboard installation, set its version to an empty value or comment it out:
   dashboard: 2.7.0
