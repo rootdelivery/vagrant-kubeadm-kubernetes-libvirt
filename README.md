@@ -19,17 +19,10 @@ If you are preparing for CKA, CKAD, CKS, or KCNA exam, **save 30%** today using 
 
 Run below commands
 Install vagramt sshfs pugin:
+
 ```shell
 vagrant plugin install vagrant-sshfs
 ```
-Then
-
-
-```shell
-sudo mkdir -p /etc/vbox/
-echo "* 0.0.0.0/0 ::/0" | sudo tee -a /etc/vbox/networks.conf
-```
-
 
 ## Bring Up the Cluster
 
@@ -37,14 +30,15 @@ To provision the cluster, execute the following commands.
 
 ```shell
 git clone https://github.com/scriptcamp/vagrant-kubeadm-kubernetes-libvirt.git
-cd vagrant-kubeadm-kubernetes
-vagrant up
+cd vagrant-kubeadm-kubernetes-libvirt
+mkdir vagrant
+vagrant up --no-parallel
 ```
 ## Set Kubeconfig file variable
 
 ```shell
-cd vagrant-kubeadm-kubernetes
-cd configs
+cd vagrant-kubeadm-kubernetes-libvirt
+cd vagrant
 export KUBECONFIG=$(pwd)/config
 ```
 
@@ -60,7 +54,7 @@ The dashboard is automatically installed by default, but it can be skipped by co
 
 If you skip the dashboard installation, you can deploy it later by enabling it in _settings.yaml_ and running the following:
 ```shell
-vagrant ssh -c "/vagrant/scripts/dashboard.sh" master
+vagrant ssh -c "/scripts/dashboard.sh" master
 ```
 
 ## Kubernetes Dashboard Access
