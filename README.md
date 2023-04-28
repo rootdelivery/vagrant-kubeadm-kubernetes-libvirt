@@ -48,31 +48,6 @@ or you can copy the config file to .kube directory.
 cp config ~/.kube/
 ```
 
-## Install Kubernetes Dashboard
-
-The dashboard is automatically installed by default, but it can be skipped by commenting out the dashboard version in _settings.yaml_ before running `vagrant up`.
-
-If you skip the dashboard installation, you can deploy it later by enabling it in _settings.yaml_ and running the following:
-```shell
-vagrant ssh -c "/scripts/dashboard.sh" master
-```
-
-## Kubernetes Dashboard Access
-
-To get the login token, copy it from _config/token_ or run the following command:
-```shell
-kubectl -n kubernetes-dashboard get secret/admin-user -o go-template="{{.data.token | base64decode}}"
-```
-
-Proxy the dashboard:
-```shell
-kubectl proxy
-```
-
-Open the site in your browser:
-```shell
-http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=kubernetes-dashboard
-```
 
 ## To shutdown the cluster,
 
@@ -91,4 +66,4 @@ vagrant up
 ```shell
 vagrant destroy -f
 ```
-
+After destroying cluster remove all files from vagrant folder
