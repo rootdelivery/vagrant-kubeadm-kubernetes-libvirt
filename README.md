@@ -29,7 +29,7 @@ vagrant plugin install vagrant-sshfs
 To provision the cluster, execute the following commands.
 
 ```shell
-git clone https://github.com/scriptcamp/vagrant-kubeadm-kubernetes-libvirt.git
+git clone https://github.com/rootdelivery/vagrant-kubeadm-kubernetes-libvirt.git
 cd vagrant-kubeadm-kubernetes-libvirt
 mkdir vagrant
 vagrant up --no-parallel
